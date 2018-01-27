@@ -35,7 +35,7 @@ class MainComponent extends React.Component {
     render() {
         return (
             <div>
-                {/* <h2>User data:</h2>
+                {/* <h2>User data:</h2>//sdasdjhasdasjb
             // <UserData/>
             <hr/>         
             <SelectedUserDetail/> */}
