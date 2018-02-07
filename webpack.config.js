@@ -1,17 +1,13 @@
+'use strict';
 var path = require('path');
 var webpack = require('webpack');
-
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-    devServer: {
-        inline: true,
-        contentBase: './src',
-        port: 3000,
-        historyApiFallback: {
-            disableDotRule: true
-        }
-    },
     devtool: 'cheap-module-eval-source-map',
-    entry: './dev/js/index.js',
+    entry: [
+        'webpack-hot-middleware/client?reload=true',
+        path.join(__dirname, './dev/js/index.js')
+      ],
     module: {
         loaders: [
             {
@@ -27,10 +23,30 @@ module.exports = {
         ]
     },
     output: {
-        path: 'src',
-        filename: 'js/bundle.min.js'
-    },
-    plugins: [
-        new webpack.optimize.OccurrenceOrderPlugin()
-    ]
+        path: path.join(__dirname, '/dist/'),
+        filename: '[name].js',
+        publicPath: '/'
+      },
+      plugins: [
+        new HtmlWebpackPlugin({
+          template: 'src/index.html',
+          inject: 'body',
+          filename: 'index.html'
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('development')
+        })
+      ],
 };
+
+
+
+
+
+
+
+
+
