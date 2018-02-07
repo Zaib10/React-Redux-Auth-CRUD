@@ -34,7 +34,7 @@ const SubmitValidationForm = props => {
   console.log("edded", error)
   return (
     <div className="container">
-      <div className=" well width margin">
+      <div className=" card bg-faded card-block width margin">
         <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-md-12">

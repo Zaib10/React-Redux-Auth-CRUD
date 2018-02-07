@@ -44,61 +44,64 @@ const SignUpForm = props => {
   return (
 
     <div className="container  ">
-      <div className="well ">
+      <div className="card bg-faded card-block ">
         <h2>SignUp</h2>
       </div>
 
-      <div className=" well">
+      <div className="card bg-faded card-block">
 
 
         <form onSubmit={handleSubmit}>
           <div className="row">
-            <div className="col-md-12">
-
-              <div className="col-md-6">
-                <Field
-                  name="firstName"
-                  type="text"
-                  component={renderField}
-                  label="First Name"
-                />
-                <Field
-                  name="lastName"
-                  type="text"
-                  component={renderField}
-                  label="Last Name"
-                />
+            <div className="col">
+              <Field
+                name="firstName"
+                type="text"
+                component={renderField}
+                label="First Name"
+              />
+            </div>  
+              <div className="col">
+              <Field
+                name="lastName"
+                type="text"
+                component={renderField}
+                label="Last Name"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <Field
+                name="email"
+                type="text"
+                component={renderField}
+                label="Email"
+              />
+            </div>  
+              {error && <strong>{error}</strong>}
+              <div className="col">
+              <Field
+                name="password"
+                type="password"
+                component={renderField}
+                label="Password"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-6">
+              <div className="col-md-2">
+                <br /><button className="btn btn-success" type="submit" disabled={submitting}>SinUp </button>
               </div>
-
-              <div className="col-md-6">
-                <Field
-                  name="email"
-                  type="text"
-                  component={renderField}
-                  label="Email"
-                />
-                {error && <strong>{error}</strong>}
-
-                <Field
-                  name="password"
-                  type="password"
-                  component={renderField}
-                  label="Password"
-                />
-              </div>
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="col-md-2">
-                    <br /><button className="btn btn-success" type="submit" disabled={submitting}>SinUp </button>
-                  </div>
-                  <div className="col-md-2">
-                    <br /><button className="btn btn-danger" type="button" disabled={pristine || submitting} onClick={reset}> Clear Values </button>
-                       <Link to="/login">Back</Link>
-                  </div>
-                </div>
+              <div className="col-md-2">
+                <br /><button className="btn btn-danger" type="button" disabled={pristine || submitting} onClick={reset}> Clear Values </button>
+                <Link to="/login">Back</Link>
               </div>
             </div>
           </div>
+
+
         </form>
 
       </div>

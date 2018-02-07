@@ -8,7 +8,7 @@ class DashBoard extends React.Component {
         return (
             (this.props.users) ?
             <div className="container">
-                <div className="well">
+                <div className="card bg-faded card-block">
                     <h1>Well Come To Dashbord</h1>
                 </div>
                 <div className="div-align">

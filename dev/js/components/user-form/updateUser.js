@@ -42,10 +42,10 @@ let UpdateUserForm = props => {
   return (
 
     <div className="container  ">
-      <div className="well ">
+      <div className="card bg-faded card-block ">
         <h2>Update Account</h2>
       </div>
-      <div className=" well">
+      <div className=" card bg-faded card-block">
         <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-md-12">
