@@ -79,7 +79,7 @@ const SignUpForm = props => {
                 label="Email"
               />
             </div>  
-              {error && <strong>{error}</strong>}
+              
               <div className="col">
               <Field
                 name="password"
@@ -88,6 +88,7 @@ const SignUpForm = props => {
                 label="Password"
               />
             </div>
+            
           </div>
           <div className="row">
             <div className="col-md-6">

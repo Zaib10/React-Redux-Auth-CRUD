@@ -74,7 +74,3 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({ InitialData, getLoggedInUser }, dispatch)
 }
 export default connect(null, matchDispatchToProps)(MainComponent);
-//export default MainComponent;
-
-
-

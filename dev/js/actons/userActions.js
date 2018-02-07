@@ -1,9 +1,15 @@
 import Request from 'superagent' ;
 import { SubmissionError } from 'redux-form'; 
+apiBaseUrl = '/'
+if(process.env.NODE_ENV== 'production'){
+    apiBaseUrl= 'http://209.250.243.231.1111'
+}else{
+    apiBaseUrl= 'http://localhost:3333'
+}
 
 export function SignUp(data){    
     console.log("signup", data)
-    const url = "http://localhost:3333/api/signup"
+    const url = `${apiBaseUrl}/api/signup`
     return Request.post(url).send(data).then((Response=>{
        console.log("data is here:", Response.body)
        return {
@@ -18,7 +24,7 @@ export function SignUp(data){
 export function LogIn(data){    
     //console.log(data)
     
-    const url = "http://localhost:3333/api/login"
+    const url = `${apiBaseUrl}"/api/login`
     return Request.post(url).send(data).then((Response=>{
         localStorage.setItem('token', Response.body.token);
         //localStorage.setItem('login', JSON.stringify(Response.body));
@@ -39,7 +45,7 @@ export function updateUser(data){
     let token= localStorage.getItem("token")
     const id= data.id
 
-    const url = `http://localhost:3333/api/updateUser/${id}`
+    const url = `${apiBaseUrl}/api/updateUser/${id}`
     return Request.put(url).set({'Content-Type': 'application/json', 'Authorization': 'Bearer' + token })
     .send(data).then((Response=>{
         localStorage.setItem('login', JSON.stringify(Response.body));
@@ -57,7 +63,7 @@ export function updateUser(data){
 
 export function getLoggedInUser(){    
     let token= localStorage.getItem("token")
-    const url = "http://localhost:3333/api/getUserData"
+    const url = `${apiBaseUrl}/api/getUserData`
     return Request.get(url).set({'Content-Type': 'application/json', 'Authorization': 'Bearer' + token })
     .then((Response=>{
        //console.log("data is here:", Response)
@@ -72,7 +78,7 @@ export function getLoggedInUser(){
 
 export function  selectUser(id){
     console.log("id is", id)
-    const url = `http://localhost:3333/api/userFindById/${id}`
+    const url = `${apiBaseUrl}/api/userFindById/${id}`
     return Request.get(url).then((Response=>{
        console.log("data is here:", Response.body)
        //return Response;
