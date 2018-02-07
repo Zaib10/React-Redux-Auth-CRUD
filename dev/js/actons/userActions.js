@@ -1,6 +1,6 @@
 import Request from 'superagent' ;
 import { SubmissionError } from 'redux-form'; 
-apiBaseUrl = '/'
+var apiBaseUrl = '/'
 if(process.env.NODE_ENV== 'production'){
     apiBaseUrl= 'http://209.250.243.231:1111'
 }else{
@@ -24,7 +24,7 @@ export function SignUp(data){
 export function LogIn(data){    
     //console.log(data)
     
-    const url = `${apiBaseUrl}"/api/login`
+    const url = `${apiBaseUrl}/api/login`
     return Request.post(url).send(data).then((Response=>{
         localStorage.setItem('token', Response.body.token);
         //localStorage.setItem('login', JSON.stringify(Response.body));
